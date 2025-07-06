@@ -1,0 +1,50 @@
+[
+  {
+    "itemImage":"/src/assets/Clothing_1.png",
+    "category": "Clothing",
+    "name": "Casual T-Shirt",
+    "price": "24.99"
+  },
+  {
+    "itemImage":"/src/assets/Footwear.png",
+    "category": "Footwear",
+    "name": "Running Shoes",
+    "price": "89.99"
+  },
+  {
+    "itemImage":"/src/assets/Electronics_1.png",
+    "category": "Electronics",
+    "name": "Wireless Headphones",
+    "price": "129.99"
+  },
+  {
+    "itemImage":"/src/assets/Electronics_2.png",
+    "category": "Electronics",
+    "name": "Smart Watch",
+    "price": "199.99"
+  },
+  {
+    "itemImage":"/src/assets/Accessories_1.png",
+    "category": "Accessories",
+    "name": "Leather Backpack",
+    "price": "79.99"
+  },
+  {
+    "itemImage":"/src/assets/Accessories_2.png",
+    "category": "Accssories",
+    "name": "Sunglasses",
+    "price": "34.99"
+  },
+  {
+    "itemImage":"/src/assets/Clothing_2.png",
+    "category": "Clothing",
+    "name": "Denim Jacket",
+    "price": "69.99"
+  },
+  {
+    "itemImage":"/src/assets/Accessories_3.png",
+    "category": "Accessories",
+    "name": "Smartphone Case",
+    "price": "19.99"
+  }
+]
