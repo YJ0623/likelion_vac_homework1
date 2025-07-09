@@ -4,15 +4,18 @@ import swal from "sweetalert";
 
 const ItemCards = ({ item }) => {
 
+  const SampleImg="https://cdn-icons-png.flaticon.com/512/582/582929.png"
   return (
     <div 
       className="bg-white rounded-xl shadow-md w-auto h-auto  cursor-pointer hover:shadow-xl ">
       <div
       className="flex justify-center items-center">
         <img
-          src={item.itemImage}
-          alt={`${item.name} 이미지`}
-          className ="object-cover rounded w-full"
+          src={SampleImg}
+          alt="상품 이미지"
+          width="150"
+          height="150"
+          className ="object-cover rounded"
         />
       </div>
 
@@ -23,8 +26,9 @@ const ItemCards = ({ item }) => {
           {item.name}</h2>
         <div className="flex items-center justify-between mt-2">
           <h2 className="font-inter font-bold text-[16px] leading-[28px] tracking-normal ">
-            ${item.price}</h2>
-          <AddButton onClick={()=>{swal("장바구니에 담으시겠습니까?", {
+            {(item.price).toLocaleString()}원</h2>
+          <AddButton onClick={()=>{
+            swal("장바구니에 담으시겠습니까?", {
             buttons: ["아니요", "네"],
           });}}/>
         </div>

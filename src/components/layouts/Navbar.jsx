@@ -1,12 +1,16 @@
 import { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import HamburgerIcon from '../../assets/hamberger.svg';
 import ProfileIcon from '../../assets/profile.svg';
 import CartIcon from '../../assets/ShoppingCart.svg';
+import SearchBar from '../SearchBar';
 
 export const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
+
+  const [search, setSearch] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -26,6 +30,12 @@ export const NavBar = () => {
     };
   }, [menuOpen]);
 
+  const handleSearch = () => {
+    if (search.trim()) {
+      navigate(`/products?name=${encodeURIComponent(search)}`);
+    }
+  };
+
   return (
     <header className="w-full bg-white shadow-md px-4 py-3 flex items-center justify-between dt:px-10 relative">
       {/* 왼쪽 영역: 로고 */}
@@ -33,6 +43,14 @@ export const NavBar = () => {
         <Link to="/" className="text-gray-700 text-lg">
           ShopMall
         </Link>
+      </div>
+
+      <div className="flex-1 flex justify-center mx-4">
+        <SearchBar
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          onSearch={handleSearch}
+        />
       </div>
 
       {/* 데스크탑 메뉴 (오른쪽 아이콘) */}
