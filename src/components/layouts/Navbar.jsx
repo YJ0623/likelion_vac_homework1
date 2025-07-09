@@ -38,7 +38,6 @@ export const NavBar = () => {
 
   return (
     <header className="w-full bg-white shadow-md px-4 py-3 flex items-center justify-between dt:px-10 relative">
-      {/* 왼쪽 영역: 로고 */}
       <div className="flex items-center">
         <Link to="/" className="text-gray-700 text-lg">
           ShopMall
@@ -53,7 +52,6 @@ export const NavBar = () => {
         />
       </div>
 
-      {/* 데스크탑 메뉴 (오른쪽 아이콘) */}
       <div className="hidden dt:flex items-center gap-4 text-gray-700 ml-auto">
         <Link to="/profile">
           <img src={ProfileIcon} alt="profile" className="w-6 h-6" />
@@ -65,7 +63,6 @@ export const NavBar = () => {
         <Link to="/shoppingcart">Go to Cart</Link>
       </div>
 
-      {/* 모바일 메뉴 버튼 (햄버거) */}
       <button
         className="dt:hidden ml-auto"
         onClick={() => setMenuOpen(!menuOpen)}
@@ -77,7 +74,6 @@ export const NavBar = () => {
         />
       </button>
 
-      {/* 모바일 메뉴 드롭다운 */}
       {menuOpen && (
         <div 
         ref={menuRef}

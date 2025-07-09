@@ -1,12 +1,26 @@
 import AddButton from "../components/Button";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 
 const ItemCards = ({ item }) => {
-
   const SampleImg="https://cdn-icons-png.flaticon.com/512/582/582929.png"
+
+  const navigate = useNavigate();
+  
+  const handleClick = () => {
+    navigate(`/item/${item.id}`);
+  }
+
+  const handleAddClick = (e) => {
+    e.stopPropagation();
+    swal("장바구니에 담으시겠습니까?",{ 
+    buttons: ["아니요", "네"],
+    });
+  }
+
   return (
-    <div 
+    <div onClick={handleClick}
       className="bg-white rounded-xl shadow-md w-auto h-auto  cursor-pointer hover:shadow-xl ">
       <div
       className="flex justify-center items-center">
@@ -27,10 +41,7 @@ const ItemCards = ({ item }) => {
         <div className="flex items-center justify-between mt-2">
           <h2 className="font-inter font-bold text-[16px] leading-[28px] tracking-normal ">
             {(item.price).toLocaleString()}원</h2>
-          <AddButton onClick={()=>{
-            swal("장바구니에 담으시겠습니까?", {
-            buttons: ["아니요", "네"],
-          });}}/>
+          <AddButton onClick={handleAddClick}/>
         </div>
       </div>
 

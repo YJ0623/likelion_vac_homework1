@@ -1,6 +1,6 @@
 import KakaoLogo from '../assets/KakaoTalk_logo.png';
 
-export const SocialLogin = () => {
+export const Login = () => {
     return (
             <div className="flex items-center justify-center min-h-screen bg-gray-100">
                 <div className='flex flex-col items-center justify-center w-140 h-180 rounded-xl bg-[#FFFFFF] shadow gap-20'>
