@@ -14,8 +14,8 @@ export const Main = () => {
         const data = await fetchAllProducts();
         setProducts(data);
         setError(null);
-      } catch (err) {
-        setError('상품을 불러오지 못했습니다.');
+      } catch (error) {
+        console.log("상품 조회 실패 : ", error);
       } finally {
         setLoading(false);
       }
@@ -25,7 +25,9 @@ export const Main = () => {
 
   if (loading) return <div>로딩중...</div>;
   if (error) return <div>에러: {error}</div>;
-  if (!products.length) return <div className="font-bold text-2xl flex justify-center items-center h-screen">상품이 없습니다.</div>;
+  if (!products.length) return 
+  <div className="font-bold text-2xl flex justify-center items-center h-screen">
+    상품이 없습니다.</div>;
 
   return (
     <section className="dt:px-20 ph:px-5 mb-20">

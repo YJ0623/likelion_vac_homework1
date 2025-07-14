@@ -19,8 +19,8 @@ const SearchResultPage = () => {
         const data = await searchProducts(keyword);
         setProducts(data);
         setError(null);
-      } catch (err) {
-        setError('검색 결과가 없습니다.');
+      } catch (error) {
+        console.log("상품 조회 실패 : ", error);
       } finally {
         setLoading(false);
       }
@@ -30,7 +30,8 @@ const SearchResultPage = () => {
 
   if (loading) return <div className="font-bold text-2xl flex justify-center items-center h-screen">로딩중...</div>;
   if (error) return <div>에러: {error}</div>;
-  if (!products.length) return <div className="font-bold text-2xl flex justify-center items-center h-screen">
+  if (!products.length) return 
+  <div className="font-bold text-2xl flex justify-center items-center h-screen">
     검색 결과가 없습니다.</div>;
 
 
