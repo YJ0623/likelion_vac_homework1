@@ -32,7 +32,7 @@ export const NavBar = () => {
 
   const handleSearch = () => {
     if (search.trim()) {
-      navigate(`/products?name=${encodeURIComponent(search)}`);
+      navigate(`/search?keyword=${encodeURIComponent(search)}`);
     }
   };
 
@@ -75,9 +75,9 @@ export const NavBar = () => {
       </button>
 
       {menuOpen && (
-        <div 
-        ref={menuRef}
-        className="absolute top-full left-0 w-full bg-white shadow-md py-2 px-4 dt:hidden z-10">
+        <div
+          ref={menuRef}
+          className="absolute top-full left-0 w-full bg-white shadow-md py-2 px-4 dt:hidden z-10">
           <Link to="/" className="block py-2">
             Home
           </Link>

@@ -1,7 +1,32 @@
-import itemData from "../data/items.json";
-import ItemCards from "../components/ItemCards";
+import { useEffect, useState } from 'react';
+import ItemCards from '../components/ItemCards';
+import { fetchAllProducts } from '../apis/products';
 
-export const Main=()=>{
+export const Main = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const loadProducts = async () => {
+      try {
+        setLoading(true);
+        const data = await fetchAllProducts();
+        setProducts(data);
+        setError(null);
+      } catch (err) {
+        setError('상품을 불러오지 못했습니다.');
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadProducts();
+  }, []);
+
+  if (loading) return <div>로딩중...</div>;
+  if (error) return <div>에러: {error}</div>;
+  if (!products.length) return <div className="font-bold text-2xl flex justify-center items-center h-screen">상품이 없습니다.</div>;
+
   return (
     <section className="dt:px-20 ph:px-5 mb-20">
       <div className="font-inter font-bold text-[26px] leading-[36px] mt-4">
@@ -15,15 +40,11 @@ export const Main=()=>{
       </div>
 
       <main className="grid grid-cols-2 dt:grid-cols-4 gap-[20px]">
-      {itemData.map((item,id) => (
-        <ItemCards key={id} item={item}/>
-      ))}
+        {products.map((item) => (
+          <ItemCards key={item.id} item={item} />
+        ))}
       </main>
-
     </section>
-  
-
-
   );
 }
 export default Main;
