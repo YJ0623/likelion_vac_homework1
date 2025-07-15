@@ -16,7 +16,7 @@ const Modal = ({ onClose }) => {
                 <Link to="/" className="text-purple-700 underline">
                     쇼핑 계속하기
                 </Link>
-                <Link to="/shoppingcart" className="bg-purple-700 text-white py-2 rounded-md">
+                <Link to="/cart" className="bg-purple-700 text-white py-2 rounded-md">
                     장바구니 보기
                  </Link>
             </div>

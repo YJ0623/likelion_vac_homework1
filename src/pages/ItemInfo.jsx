@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react";
 import Modal from "../components/Modal";
 import { fetchProductInfo } from "../apis/products";
+import { addToCart } from "../apis/cart";
 
 export const ItemInfo = () => {
   const SampleImg = "https://cdn-icons-png.flaticon.com/512/582/582929.png"
@@ -34,13 +35,24 @@ export const ItemInfo = () => {
     loadItem();
   }, [id]);
 
+  useEffect(()=>{
+    console.log()
+  },[])
+
 
   if (loading) return <div>로딩 중...</div>;
   if (error) return <div>{error}</div>;
   if (!item) return null;
 
-  const handleAddToCart = () => {
+  const handleAddToCart = async () => {
+  try {
+    const result = await addToCart(item.id, quantity);
+    console.log("장바구니 응답 결과:", result);
     setShowModal(true);
+    } catch (err) {
+    console.error("장바구니 추가 실패:", err);
+    alert("장바구니에 상품을 담는 데 실패했습니다.");
+    }
   };
 
   const onIncrease = () => {

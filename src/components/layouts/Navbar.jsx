@@ -57,10 +57,10 @@ export const NavBar = () => {
           <img src={ProfileIcon} alt="profile" className="w-6 h-6" />
         </Link>
         <Link to="/signup">Sign up</Link>
-        <Link to="/shoppingcart">
+        <Link to="/cart">
           <img src={CartIcon} alt="cart" className="w-6 h-6" />
         </Link>
-        <Link to="/shoppingcart">Go to Cart</Link>
+        <Link to="/cart">Go to Cart</Link>
       </div>
 
       <button
@@ -84,7 +84,7 @@ export const NavBar = () => {
           <Link to="/signup" className="block py-2">
             Sign Up
           </Link>
-          <Link to="/shoppingcart" className="block py-2">
+          <Link to="/cart" className="block py-2">
             Cart
           </Link>
         </div>

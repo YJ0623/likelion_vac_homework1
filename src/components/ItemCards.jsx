@@ -2,6 +2,7 @@ import AddButton from "../components/Button";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
+import { addToCart } from "../apis/cart";
 
 const ItemCards = ({ item }) => {
   const SampleImg="https://cdn-icons-png.flaticon.com/512/582/582929.png"
@@ -13,11 +14,28 @@ const ItemCards = ({ item }) => {
   }
 
   const handleAddClick = (e) => {
-    e.stopPropagation();
-    swal("장바구니에 담으시겠습니까?",{ 
+  e.stopPropagation(); // 카드 클릭 막기
+
+  swal({
+    text: "장바구니에 담으시겠습니까?",
     buttons: ["아니요", "네"],
-    });
-  }
+  }).then(async (willAdd) => {
+    if (willAdd) {
+      try {
+        const res = await addToCart(item.id, 1); // 수량 기본 1
+        swal("장바구니에 담았습니다!", {
+          icon: "success",
+        });
+        return res;
+      } catch (error) {
+        console.error("장바구니 추가 실패:", error);
+        swal("문제가 발생했습니다 😥", {
+          icon: "error",
+        });
+      }
+    }
+  });
+};
 
   return (
     <div onClick={handleClick}
