@@ -119,7 +119,7 @@ return (
 
                 <div className="w-8 flex justify-center">
                 <button 
-                 onClick={() => handleDelete(item)}
+                 onClick={() => handleDelete(item.productId)}
                 className="text-gray-400 hover:text-red-500 text-xl cursor-pointer">×</button>
                 </div>
             </div>

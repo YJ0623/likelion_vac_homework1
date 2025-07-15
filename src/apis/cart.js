@@ -19,6 +19,6 @@ export const addToCart = async (productId, quantity) => {
 export const deleteItem = async (productId) => {
   if (!productId) throw new Error("productId 없음");
 
-  const res = await instance.delete(`/cart/${productId}`);
+  const res = await instance.delete(`/cart/${productId}?userId=${userId}`);
   return res.data;
 };
