@@ -6,6 +6,7 @@ import Cart from './pages/Cart';
 import { Login } from './pages/Login';
 import { ItemInfo } from './pages/ItemInfo';
 import SearchResultPage from './pages/SearchResult';
+import KakaoRedirectPage from './pages/KakaoRedirectPage';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<Login />} />
           <Route path='/item/:id' element={<ItemInfo />} />
+          <Route path="/login/oauth2/code/kakao" element={<KakaoRedirectPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -8,6 +8,7 @@ export const Cart = () => {
 
     // 카트 데이터
     const [cartData, setCartData] = useState([]);
+    // eslint-disable-next-line no-unused-vars
     const [totalItems, setTotalItems] = useState(0);
     const [totalPrice, setTotalPrice] = useState(0);
 

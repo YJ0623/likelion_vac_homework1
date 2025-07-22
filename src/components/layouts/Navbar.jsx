@@ -4,14 +4,27 @@ import HamburgerIcon from '../../assets/hamberger.svg';
 import ProfileIcon from '../../assets/profile.svg';
 import CartIcon from '../../assets/ShoppingCart.svg';
 import SearchBar from '../SearchBar';
+import { useAuthStore } from '../../../stores/useAuthStore';
 
 export const NavBar = () => {
+  const { isLoggedIn, clearAuth  } = useAuthStore();
+
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
 
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
 
+  const handleCartClick = () => {
+    if (!isLoggedIn) {
+      alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.");
+      navigate('/login');
+    } else {
+      navigate('/cart');
+    }
+  };
+
+  console.log(isLoggedIn);
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (menuRef.current && !menuRef.current.contains(e.target)) {
@@ -52,15 +65,29 @@ export const NavBar = () => {
         />
       </div>
 
+
       <div className="hidden dt:flex items-center gap-4 text-gray-700 ml-auto">
+        {isLoggedIn ? (
+        <button
+        className=' text-gray-700 pr-[20px]'
+        onClick={() => {
+          clearAuth();
+          localStorage.removeItem("accessToken");
+          localStorage.removeItem("refreshToken");
+        }}>
+          로그아웃
+        </button>
+      ) : (
+        <Link to="/login">로그인</Link>
+      )}
         <Link to="/profile">
           <img src={ProfileIcon} alt="profile" className="w-6 h-6" />
         </Link>
         <Link to="/signup">Sign up</Link>
-        <Link to="/cart">
-          <img src={CartIcon} alt="cart" className="w-6 h-6" />
-        </Link>
-        <Link to="/cart">Go to Cart</Link>
+      <button onClick={handleCartClick}>
+        <img src={CartIcon} alt="cart" className="w-6 h-6" />
+      </button>
+      <button onClick={handleCartClick}>Go to Cart</button>
       </div>
 
       <button
@@ -78,15 +105,22 @@ export const NavBar = () => {
         <div
           ref={menuRef}
           className="absolute top-full left-0 w-full bg-white shadow-md py-2 px-4 dt:hidden z-10">
-          <Link to="/" className="block py-2">
-            Home
-          </Link>
-          <Link to="/signup" className="block py-2">
-            Sign Up
-          </Link>
-          <Link to="/cart" className="block py-2">
-            Cart
-          </Link>
+          <Link to="/" className="block py-2">Home</Link>
+          <Link to="/signup" className="block py-2">Sign Up</Link>
+          <button onClick={handleCartClick} className="block py-2">Cart</button>
+          {isLoggedIn ? (
+            <button
+              onClick={() => {
+                clearAuth();
+                localStorage.removeItem("auth-storage");
+              }}
+              className="block py-2"
+            >
+              로그아웃
+            </button>
+          ) : (
+            <Link to="/login" className="block py-2">로그인</Link>
+          )}
         </div>
       )}
     </header>

@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react";
-import Modal from "../components/Modal";
+import CartModal from "../components/CartModal";
 import { fetchProductInfo } from "../apis/products";
 import { addToCart } from "../apis/cart";
 
@@ -113,7 +113,7 @@ export const ItemInfo = () => {
           </button>
         </div>
       </div>
-      {showModal && <Modal onClose={() => setShowModal(false)} />}
+      {showModal && <CartModal onClose={() => setShowModal(false)} />}
     </div>
   );
 };

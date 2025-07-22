@@ -3,10 +3,12 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import { addToCart } from "../apis/cart";
+import { useAuthStore } from "../../stores/useAuthStore";
 
 const ItemCards = ({ item }) => {
   const SampleImg="https://cdn-icons-png.flaticon.com/512/582/582929.png"
-
+  
+  const { isLoggedIn } = useAuthStore();
   const navigate = useNavigate();
   
   const handleClick = () => {
@@ -14,15 +16,20 @@ const ItemCards = ({ item }) => {
   }
 
   const handleAddClick = (e) => {
-  e.stopPropagation(); // 카드 클릭 막기
+  e.stopPropagation();
 
+  if (!isLoggedIn) {
+    alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.");
+    navigate('/login');
+    return;
+  }
   swal({
     text: "장바구니에 담으시겠습니까?",
     buttons: ["아니요", "네"],
   }).then(async (willAdd) => {
     if (willAdd) {
       try {
-        const res = await addToCart(item.id, 1); // 수량 기본 1
+        const res = await addToCart(item.id, 1);
         swal("장바구니에 담았습니다!", {
           icon: "success",
         });
