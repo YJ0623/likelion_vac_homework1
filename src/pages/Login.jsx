@@ -9,8 +9,8 @@ export const Login = () => {
     console.log(REDIRECT_URI);
 
     const handleLogin = () => {
-  window.location.href = "https://yeogaeng.shop/oauth2/authorization/kakao";
-};
+        window.location.href = "https://yeogaeng.shop/login/oauth2/code/kakao";
+    };
 
     return (
             <div className="flex items-center justify-center min-h-screen bg-gray-100">
