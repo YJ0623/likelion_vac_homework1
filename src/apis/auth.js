@@ -1,4 +1,4 @@
-import { axiosInstance } from './axios';
+import axiosInstance from './axios';
 
 export const login = async (code) => {
     const res = await axiosInstance.post('/login/oauth2/authorization/kakao', {
