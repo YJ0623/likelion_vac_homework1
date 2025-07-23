@@ -9,7 +9,7 @@ export const Login = () => {
     console.log(REDIRECT_URI);
 
     const handleLogin = () => {
-        window.location.href = "https://yeogaeng.shop/login/oauth2/code/kakao";
+        window.location.href = kakaoURL;
     };
 
     return (
