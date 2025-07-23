@@ -32,7 +32,7 @@ const KakaoRedirectPage = () => {
   };
 
   kakaoLogin();
-}, [location.search, navigate, setTokens]); // ✅ 여기에 setTokens 넣는 게 정석
+}, [location.search, navigate, setTokens]);
 
   return <>로딩중 ...</>;
 };
