@@ -24,6 +24,7 @@ const KakaoRedirectPage = () => {
       const { accessToken, refreshToken } = await login(code);
       setTokens(accessToken, refreshToken);
       navigate('/');
+      console.log(accessToken, refreshToken);
     } catch (err) {
       console.error(err);
       alert('로그인 실패');
