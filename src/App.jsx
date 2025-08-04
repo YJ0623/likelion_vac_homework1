@@ -19,7 +19,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<Login />} />
           <Route path='/item/:id' element={<ItemInfo />} />
-          <Route path="/auth/callback" element={<KakaoRedirectPage />} />
+          <Route path="/oauth2/callback/kakao" element={<KakaoRedirectPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
