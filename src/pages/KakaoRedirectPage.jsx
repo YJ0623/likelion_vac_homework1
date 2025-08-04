@@ -33,7 +33,7 @@ const KakaoRedirectPage = () => {
   };
 
   kakaoLogin();
-}, [location.search, navigate, setTokens]);
+}, [location.search, navigate]);
 
   return <>로딩중 ...</>;
 };
