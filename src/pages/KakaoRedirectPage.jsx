@@ -18,6 +18,8 @@ const KakaoRedirectPage = () => {
     return;
   }
 
+  console.log("보내는 code:", code);
+  
   const kakaoLogin = async () => {
     try {
       console.log('인가코드:', code);
